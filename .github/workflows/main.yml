@@ -1,4 +1,4 @@
-name: nethuterbuild
+name: build
 
 on: [push]
 
@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        model: [G975F]
+        model: ["G975F"]
 
     steps:
       - uses: actions/checkout@v3
@@ -55,9 +55,10 @@ jobs:
           set -e -o pipefail
           ./cruelbuild config                    \
                        model=${{ matrix.model }} \
-                       name="Cruel-devel"        \
+                       name="Net-Hunter"        \
                        toolchain=$TOOLCHAIN      \
                        +magisk                   \
+                       +kali                     \
                        +nohardening              \
                        +ttl                      \
                        +wireguard                \
